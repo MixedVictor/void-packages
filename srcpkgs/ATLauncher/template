@@ -1,0 +1,38 @@
+# Template file for 'ATLauncher'
+pkgname=ATLauncher
+version=3.4.40.1
+revision=1
+hostmakedepends="openjdk17 gradle"
+depends="java-environment>=17 libopenal hicolor-icon-theme"
+short_desc="Launcher for Minecraft"
+maintainer="Victor Augusto <victoraugusto.mixed@gmail.com>"
+license="GPL-3.0-only"
+homepage="https://github.com/ATLauncher/ATLauncher"
+changelog="https://raw.githubusercontent.com/ATLauncher/ATLauncher/refs/tags/v${version}/CHANGELOG.md"
+distfiles="https://github.com/ATLauncher/ATLauncher/archive/refs/tags/v${version}.tar.gz"
+checksum=d7f28491ad23e9892fd20d75f2493ba58877abc1ad9a6482b7217c82800f60f4
+
+build_options="hidpi"
+build_options_default="hidpi"
+desc_option_hidpi="Launch ATLauncher with 2.0x scaling"
+
+post_patch() {
+	vopt_if hidpi \
+		$(sed -i 's|^exec java |exec java -Dsun.java2d.uiScale=2.0 |' packaging/aur/atlauncher/atlauncher)
+}
+
+do_build() {
+	gradle build -x test
+}
+
+do_install() {
+	vmkdir usr/share/java/atlauncher
+
+	vinstall dist/ATLauncher-${version}.jar 644 usr/share/java/atlauncher ATLauncher.jar
+
+	vbin packaging/aur/atlauncher/atlauncher usr/bin/atlauncher
+
+	vinstall packaging/aur/atlauncher/atlauncher.desktop 644 usr/share/applications
+	vinstall packaging/aur/atlauncher/atlauncher.png 644 usr/share/pixmaps
+	vinstall packaging/aur/atlauncher/atlauncher.svg 644 usr/share/icons/hicolor/scalable/apps
+}
