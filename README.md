@@ -1,3 +1,9 @@
+### Packages I added:
+- [x] ATLauncher
+- [x] Patched GLFW for Minecraft
+- [x] ObjFW
+- [ ] Heroic Games Launcher
+
 ## The XBPS source packages collection
 
 This repository contains the XBPS source packages collection to build binary packages
