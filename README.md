@@ -2,7 +2,7 @@
 - [x] ATLauncher
 - [x] Patched GLFW for Minecraft
 - [x] ObjFW
-- [ ] Heroic Games Launcher
+- [x] Heroic Games Launcher
 
 ## The XBPS source packages collection
 
