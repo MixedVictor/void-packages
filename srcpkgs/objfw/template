@@ -1,0 +1,15 @@
+# Template file for 'objfw'
+pkgname=objfw
+version=1.3.2
+revision=1
+build_style=configure
+configure_args="--prefix /usr"
+hostmakedepends="clang"
+makedepends="gnutls-devel"
+short_desc="Portable, lightweight framework for the Objective-C language"
+maintainer="Victor Augusto <victoraugusto.mixed@gmail.com>"
+license="LGPL-3.0-only"
+homepage="https://git.nil.im/ObjFW/ObjFW"
+changelog="https://git.nil.im/ObjFW/ObjFW/raw/branch/main/ChangeLog"
+distfiles="https://objfw.nil.im/downloads/objfw-${version}.tar.gz"
+checksum=8148df0d55d1a3218fe9965144b5c3ee2a7f4d8e43e430a6107e294043872cab
