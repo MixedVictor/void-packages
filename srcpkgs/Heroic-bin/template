@@ -22,10 +22,12 @@ do_extract() {
 do_install() {
 	# Stealing the homework from the Vivaldi template
 	vinstall usr/share/applications/heroic.desktop 644 usr/share/applications
-	
+
+	vmkdir opt
+
 	vcopy usr/share usr
 	vcopy opt/Heroic opt
 
 	vmkdir usr/bin
-	ln -s /opt/Heroic/heroic ${DESTDIR}/usr/bin/heroic
+	ln -s opt/Heroic/heroic ${DESTDIR}/usr/bin/heroic
 }
