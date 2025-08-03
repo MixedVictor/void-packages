@@ -1,0 +1,34 @@
+# Template file for 'Heroic-bin'
+pkgname=Heroic-bin
+version=2.18.0
+revision=1
+archs="x86_64"
+build_style=fetch
+depends="hicolor-icon-theme"
+short_desc="Games launcher for GOG, Amazon and Epic Games"
+maintainer="Victor Augusto <victoraugusto.mixed@gmail.com>"
+license="GPL-3.0-only"
+_pkg="Heroic-${version}-linux-x64.pacman"
+homepage="https://heroicgameslauncher.com/"
+changelog="https://raw.githubusercontent.com/Heroic-Games-Launcher/HeroicGamesLauncher/refs/tags/${version}/CHANGELOG.md"
+distfiles="https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v${version}/${_pkg}"
+checksum=079510c19633a4b7b0afc7650d08e9b346fc7e47ff45dbfc4c3d683ca2e62d53
+# IDK if this is needed
+nostrip=yes
+
+do_extract() {
+	bsdtar xfZ ${XBPS_SRCDISTDIR}/${pkgname}-${version}/${_pkg}
+}
+
+do_install() {
+	# Stealing the homework from the Vivaldi template
+	vinstall usr/share/applications/heroic.desktop 644 usr/share/applications
+
+	vmkdir opt
+
+	vcopy usr/share usr
+	vcopy opt/Heroic opt
+
+	vmkdir usr/bin
+	ln -s opt/Heroic/heroic ${DESTDIR}/usr/bin/heroic
+}
