@@ -1,9 +1,9 @@
 # Template file for 'ATLauncher'
 pkgname=ATLauncher
 version=3.4.40.1
-revision=1
+revision=2
 hostmakedepends="openjdk17 gradle"
-depends="java-environment>=17 libopenal hicolor-icon-theme"
+depends="openjdk17 libopenal hicolor-icon-theme"
 short_desc="Launcher for Minecraft"
 maintainer="Victor Augusto <victoraugusto.mixed@gmail.com>"
 license="GPL-3.0-only"
